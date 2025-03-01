@@ -9,7 +9,8 @@
         \n\nAchtung: Die als Favoriten markierten Schimpfwörter werden nicht über einen Neustart
         der App hinaus persistiert.
         \n\nDie App kann %1$,d verschiedene Schimpfwörter erzeugen.
-        \n\nApp erzeugt am:\n%2$s.
+        \n\nVersion %2$s
+        \n\nBuild-Zeitpunkt:\n%3$s.
     </string>
 
     <string name="favorit_hinzugefuegt">Favorit hinzugefügt, es gibt jetzt %d Favoriten.</string>

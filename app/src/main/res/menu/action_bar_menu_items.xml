@@ -15,19 +15,23 @@
     <!-- wegen "withText" wird der Text zusätzlich zum Icon angezeigt, 
          wenn genügend Platz vorhanden ist. -->
 
+    <!--
     <item
         android:id="@+id/action_merken"
         android:icon="@drawable/baseline_favorite_24"
         android:title="@string/actionbar_merken"
         app:showAsAction="always" />
-
+    -->
 
     <!-- Wegen showAsAction="never" werden für die folgenden Menü-Einträge
          als Einträge im Overflow-Menü angezeigt. -->
+
+    <!--
     <item
         android:id="@+id/action_favoriten_anzeigen"
         android:title="@string/actionbar_favoriten_anzeigen"
         app:showAsAction="never" />
+    -->
 
     <item
         android:id="@+id/action_ueber"

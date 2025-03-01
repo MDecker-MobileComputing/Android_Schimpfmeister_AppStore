@@ -25,7 +25,7 @@ import de.mide.android.schimpfmeister.favoritenActivity.FavoritenActivity;
  * Activity zur Anzeige zufällig generierter Schimpfwörter.
  * <br><br>
  *
- * Die App verwendet die in Android 3.0 (API-Level 11) eingeführte <i>ActionBar</i>.
+ * Die App verwendet mit in Android 3.0 (API-Level 11) eingeführte <i>ActionBar</i>.
  * In der Datei {@code values/themes.xml} muss als parent auch ein Theme gesetzt sein,
  * dass die ActionBar unterstützt, z.B. {@code Theme.AppCompat.Light.DarkActionBar}.
  * <br><br>
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     /** URL zur Hilfeseite für die App, die in externer Browser-App geöffnet wird. */
     private static final String URL_SCHIMPFMEISTER =
-            "https://github.com/MDecker-MobileComputing/Android_Schimpfmeister?tab=readme-ov-file#schimpfmeister";
+            "https://github.com/MDecker-MobileComputing/Android_Schimpfmeister_AppStore/wiki";
 
     /** URL zur Homepage von "Schimpfolino" auf GitHub, die in externer Browser-App geöffnet wird. */
     private static final String URL_SCHIMPFOLOINO =
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.action_bar_menu_items, menu);
 
-        _merkenMenuItem = menu.findItem(R.id.action_merken);
+        //_merkenMenuItem = menu.findItem(R.id.action_merken);
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -148,12 +148,15 @@ public class MainActivity extends AppCompatActivity {
             neuesSchimpfwort();
             return true;
 
-        } else if (selectedMenuId == R.id.action_merken) {
+        }
+        /*
+        else if (selectedMenuId == R.id.action_merken) {
 
             lesezeichenSetzen();
             return true;
+        }
+        */ else if (selectedMenuId == R.id.action_ueber) {
 
-        } else if (selectedMenuId == R.id.action_ueber) {
 
             aboutDialogAnzeigen();
             return true;
@@ -163,14 +166,14 @@ public class MainActivity extends AppCompatActivity {
             hilfeAnzeigen();
             return true;
 
-        } else if (selectedMenuId == R.id.action_favoriten_anzeigen) {
+        } /* else if (selectedMenuId == R.id.action_favoriten_anzeigen) {
 
             Intent intent = new Intent(this, FavoritenActivity.class);
             startActivity(intent);
 
             return true;
 
-        } else {
+        } */ else {
 
             return super.onOptionsItemSelected(item);
         }
@@ -219,7 +222,9 @@ public class MainActivity extends AppCompatActivity {
     private void aboutDialogAnzeigen() {
 
         int anzahlKombinationen = _schimpfwortGenerator.getAnzahlKombinationen();
-        String ueberText = getString(R.string.ueber_text, anzahlKombinationen, BUILD_ZEITPUNKT);
+        String versionName = BuildConfig.VERSION_NAME;
+
+        String ueberText = getString(R.string.ueber_text, anzahlKombinationen, versionName, BUILD_ZEITPUNKT);
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
 
