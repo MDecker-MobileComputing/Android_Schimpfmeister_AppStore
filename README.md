@@ -8,6 +8,10 @@ Die App erzeugt zufällige Schimpfwörter unter Verwendung der Wortlisten und de
 
 <br>
 
+URL der App im App-Store "Google Play": https://play.google.com/store/apps/details?id=de.mide.android.schimpfmeister
+
+<br>
+
 Endnutzerdokumentation: siehe [Wiki von diesem Repo](https://github.com/MDecker-MobileComputing/Android_Schimpfmeister_AppStore/wiki)
 
 <br>
