@@ -10,6 +10,18 @@ Die App erzeugt zufällige Schimpfwörter unter Verwendung der Wortlisten und de
 
 Endnutzerdokumentation: siehe [Wiki von diesem Repo](https://github.com/MDecker-MobileComputing/Android_Schimpfmeister_AppStore/wiki)
 
+<br>
+
+----
+
+## Screenshots ##
+
+<br>
+
+![Screenshot 1](screenshot_1.png) &nbsp; ![Screenshot 2](screenshot_2.png)
+
+<br>
+
 ----
 
 ## License ##
