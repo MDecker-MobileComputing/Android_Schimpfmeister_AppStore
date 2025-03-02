@@ -16,8 +16,8 @@ android {
         applicationId "de.mide.android.schimpfmeister"
         minSdk 24
         targetSdk 35
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
 
         // Definition von BUILD_ZEITPUNKT, ist erst nach erstem Build verfügbar; ggf. auch Gradle-Datei syncen.
         // Zugriff: import static de.mide.android.schimpfmeister.BuildConfig.BUILD_ZEITPUNKT;
