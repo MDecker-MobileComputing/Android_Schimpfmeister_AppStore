@@ -37,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
     /** Dieser Tag soll von allen Klassen im Projekt verwendet werden. */
     public static final String TAG4LOGGING = "Schimpfmeister";
 
+    /** Key, unter dem das Adjektiv des aktuell angezeigten Schimpfworts gespeichert wird. */
+    private static final String SCHMIPFWORT_GESICHERT_ADJEKTIV = "schimpfwort-adjektiv";
+
+    /** Key, unter dem das Adjektiv des aktuell angezeigten Schimpfworts gespeichert wird. */
+    private static final String SCHMIPFWORT_GESICHERT_SUBSTANTIV = "schimpfwort-substantiv";
+
     /** URL zur Hilfeseite für die App, die in externer Browser-App geöffnet wird. */
     private static final String URL_SCHIMPFMEISTER =
             "https://github.com/MDecker-MobileComputing/Android_Schimpfmeister_AppStore/wiki";
@@ -68,6 +74,9 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Lifecycle-Methode: Layout-Datei für Activity setzen und ActionBar konfigurieren.
      * Es wird auch gleich ein Schimpfwort erzeugt und angezeigt.
+     *
+     * @param savedInstanceState Aus diesem Bundle kann ein evtl. vor einer Display-Drehung
+     *                           angezeigtes Schimpfwort wiederhergestellt werden.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +89,37 @@ public class MainActivity extends AppCompatActivity {
 
         actionBarKonfigurieren();
 
-        neuesSchimpfwort();
+        if ( savedInstanceState != null &&
+             savedInstanceState.containsKey( SCHMIPFWORT_GESICHERT_ADJEKTIV ) &&
+             savedInstanceState.containsKey( SCHMIPFWORT_GESICHERT_SUBSTANTIV )
+           ) {
+
+            String adjektiv   = savedInstanceState.getString( SCHMIPFWORT_GESICHERT_ADJEKTIV   );
+            String substantiv = savedInstanceState.getString( SCHMIPFWORT_GESICHERT_SUBSTANTIV );
+
+            _adjektivTextview.setText(   adjektiv   );
+            _substantivTextview.setText( substantiv );
+
+        } else {
+
+            neuesSchimpfwort();
+        }
+    }
+
+
+    /**
+     * Aktuell angezeigtes Schimpfwort vor Drehung des Displays sichern.
+     */
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+
+        super.onSaveInstanceState(outState);
+
+        if ( _schimpfwort != null ) {
+
+            outState.putString( SCHMIPFWORT_GESICHERT_ADJEKTIV  , _schimpfwort.adjektiv()   );
+            outState.putString( SCHMIPFWORT_GESICHERT_SUBSTANTIV, _schimpfwort.substantiv() );
+        }
     }
 
 
