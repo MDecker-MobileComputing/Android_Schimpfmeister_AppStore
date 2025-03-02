@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     /** Key, unter dem das Adjektiv des aktuell angezeigten Schimpfworts gespeichert wird. */
     private static final String SCHMIPFWORT_GESICHERT_ADJEKTIV = "schimpfwort-adjektiv";
 
-    /** Key, unter dem das Adjektiv des aktuell angezeigten Schimpfworts gespeichert wird. */
+    /** Key, unter dem das Substantiv des aktuell angezeigten Schimpfworts gespeichert wird. */
     private static final String SCHMIPFWORT_GESICHERT_SUBSTANTIV = "schimpfwort-substantiv";
 
     /** URL zur Hilfeseite für die App, die in externer Browser-App geöffnet wird. */
