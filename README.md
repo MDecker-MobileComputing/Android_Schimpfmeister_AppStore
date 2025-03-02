@@ -4,11 +4,12 @@
 
 Das Repo enhält ein Projekt für *Android Studio* für eine native Android-App (Java).
 Die App erzeugt zufällige Schimpfwörter unter Verwendung der Wortlisten und des Algorithmus von
-[Schimpfolino](https://github.com/NikolaiRadke/Schimpfolino/) von Nikolai Radke.
+[Schimpfolino](https://github.com/NikolaiRadke/Schimpfolino/) nach Nikolai Radke.
 
 <br>
 
-URL der App im App-Store "Google Play": https://play.google.com/store/apps/details?id=de.mide.android.schimpfmeister
+URL der App im App-Store "Google Play": 
+https://play.google.com/store/apps/details?id=de.mide.android.schimpfmeister
 
 <br>
 
