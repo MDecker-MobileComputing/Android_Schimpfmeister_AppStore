@@ -89,21 +89,41 @@ public class MainActivity extends AppCompatActivity {
 
         actionBarKonfigurieren();
 
-        if ( savedInstanceState != null &&
-             savedInstanceState.containsKey( SCHMIPFWORT_GESICHERT_ADJEKTIV ) &&
-             savedInstanceState.containsKey( SCHMIPFWORT_GESICHERT_SUBSTANTIV )
-           ) {
-
-            String adjektiv   = savedInstanceState.getString( SCHMIPFWORT_GESICHERT_ADJEKTIV   );
-            String substantiv = savedInstanceState.getString( SCHMIPFWORT_GESICHERT_SUBSTANTIV );
-
-            _adjektivTextview.setText(   adjektiv   );
-            _substantivTextview.setText( substantiv );
-
-        } else {
+        boolean schimpfwortWiederhergestellt = schimpfwortWiederherstellen(savedInstanceState);
+        if (!schimpfwortWiederhergestellt) {
 
             neuesSchimpfwort();
         }
+    }
+
+
+    /**
+     * Die Methode versucht das zuvor angezeigte Schimpfwort wiederherzustellen.
+     *
+     * @param savedInstanceState Argument der {@link #onCreate(Bundle)}-Methode, in
+     *                           dem evtl. das vor der Display-Drehung dargestellte
+     *                           Schimpfwort gespeichert wurde.
+     *
+     * @return {@code true}, gdw. das Schimpfwort aus {@code savedInstanceState}
+     *         wiederhergestellt werden konnte.
+     */
+    private boolean schimpfwortWiederherstellen(Bundle savedInstanceState) {
+
+        if ( savedInstanceState == null ||
+             savedInstanceState.containsKey( SCHMIPFWORT_GESICHERT_ADJEKTIV )   == false ||
+             savedInstanceState.containsKey( SCHMIPFWORT_GESICHERT_SUBSTANTIV ) == false
+           ) {
+
+            return false;
+        }
+
+        String adjektiv   = savedInstanceState.getString( SCHMIPFWORT_GESICHERT_ADJEKTIV   );
+        String substantiv = savedInstanceState.getString( SCHMIPFWORT_GESICHERT_SUBSTANTIV );
+
+        _adjektivTextview.setText(   adjektiv   );
+        _substantivTextview.setText( substantiv );
+
+        return true;
     }
 
 
