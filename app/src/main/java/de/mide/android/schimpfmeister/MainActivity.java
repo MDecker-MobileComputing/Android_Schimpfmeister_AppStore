@@ -123,6 +123,8 @@ public class MainActivity extends AppCompatActivity {
         _adjektivTextview.setText(   adjektiv   );
         _substantivTextview.setText( substantiv );
 
+        _schimpfwort = new SchimpfwortRecord( adjektiv, substantiv );
+
         return true;
     }
 
