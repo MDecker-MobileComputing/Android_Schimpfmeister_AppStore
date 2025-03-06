@@ -16,8 +16,8 @@ android {
         applicationId "de.mide.android.schimpfmeister"
         minSdk 24
         targetSdk 35
-        versionCode 2
-        versionName "1.1"
+        versionCode 3
+        versionName "1.2"
 
         // Definition von BUILD_ZEITPUNKT, ist erst nach erstem Build verfügbar; ggf. auch Gradle-Datei syncen.
         // Zugriff: import static de.mide.android.schimpfmeister.BuildConfig.BUILD_ZEITPUNKT;
@@ -28,7 +28,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true // auch Retrace-Datei in App-Store hochladen: app/build/outputs/mapping/release/mapping.txt
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
