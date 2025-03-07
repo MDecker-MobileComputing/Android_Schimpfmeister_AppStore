@@ -7,8 +7,8 @@
     <string name="ueber_text">Diese App verwendet für die Erzeugung der Beschimpfungen den
         Algorithmus und die Wortlisten des Schimpfolino-Gadget von Nikolai Radke.
         \n\nDie App kann %1$s verschiedene Schimpfwörter erzeugen.
-        \n\nVersion %2$s
-        \n\nBuild-Zeitpunkt:\n%3$s.
+        \n\nVersion %2$s (VersionCode=%3$d)
+        \n\nBuild-Zeitpunkt:\n%4$s.
     </string>
 
     <string name="favorit_hinzugefuegt">Favorit hinzugefügt, es gibt jetzt %d Favoriten.</string>

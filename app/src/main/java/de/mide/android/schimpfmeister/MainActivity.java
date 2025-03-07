@@ -286,8 +286,13 @@ public class MainActivity extends AppCompatActivity {
         String anzKombinationenStr =  getGanzzahlenFormatierer().format( anzKombinationen );
 
         String versionName = BuildConfig.VERSION_NAME;
+        int versionCode = BuildConfig.VERSION_CODE;
 
-        String ueberText = getString(R.string.ueber_text, anzKombinationenStr, versionName, BUILD_ZEITPUNKT);
+        String ueberText = getString( R.string.ueber_text,
+                                      anzKombinationenStr,
+                                      versionName,
+                                      versionCode,
+                                      BUILD_ZEITPUNKT);
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
 
