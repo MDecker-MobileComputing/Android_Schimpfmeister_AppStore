@@ -2,9 +2,6 @@ plugins {
     alias(libs.plugins.android.application)
 }
 
-// Definitionen für eigenes buildConfigField BUILD_ZEITPUNKT
-def buildZeitpunkt = new Date()
-
 android {
     namespace 'de.mide.android.schimpfmeister'
     compileSdk 35
@@ -21,7 +18,9 @@ android {
 
         // Definition von BUILD_ZEITPUNKT, ist erst nach erstem Build verfügbar; ggf. auch Gradle-Datei syncen.
         // Zugriff: import static de.mide.android.schimpfmeister.BuildConfig.BUILD_ZEITPUNKT;
-        buildConfigField "String", "BUILD_ZEITPUNKT", "\"${buildZeitpunkt.format('dd. MMM yyyy (EE), HH:mm')} Uhr\""
+        def buildZeitpunkt = new Date()
+        def buildZeitpunktStr = buildZeitpunkt.format('dd MMM yyyy (EE), HH:mm')
+        buildConfigField "String", "BUILD_ZEITPUNKT", "\"${buildZeitpunktStr} Uhr\""
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
