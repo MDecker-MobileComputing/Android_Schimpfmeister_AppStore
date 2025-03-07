@@ -19,8 +19,8 @@ android {
         // Definition von BUILD_ZEITPUNKT, ist erst nach erstem Build verfügbar; ggf. auch Gradle-Datei syncen.
         // Zugriff: import static de.mide.android.schimpfmeister.BuildConfig.BUILD_ZEITPUNKT;
         def buildZeitpunkt = new Date()
-        def buildZeitpunktStr = buildZeitpunkt.format('dd MMM yyyy (EE), HH:mm')
-        buildConfigField "String", "BUILD_ZEITPUNKT", "\"${buildZeitpunktStr} Uhr\""
+        def buildZeitpunktStr = buildZeitpunkt.format("d. MMM yyyy (EE), HH:mm 'Uhr'")
+        buildConfigField "String", "BUILD_ZEITPUNKT", "\"${buildZeitpunktStr}\""
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
