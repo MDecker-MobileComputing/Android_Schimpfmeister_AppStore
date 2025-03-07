@@ -1,6 +1,7 @@
 package de.mide.android.schimpfmeister;
 
 import static de.mide.android.schimpfmeister.BuildConfig.BUILD_ZEITPUNKT;
+import static de.mide.android.schimpfmeister.helferlein.FormatiererFactory.getGanzzahlenFormatierer;
 import static android.content.Intent.ACTION_VIEW;
 
 import android.content.Intent;
@@ -18,7 +19,6 @@ import androidx.appcompat.app.ActionBar;
 
 import de.mide.android.schimpfmeister.engine.SchimpfwortGenerator;
 import de.mide.android.schimpfmeister.engine.SchimpfwortRecord;
-import de.mide.android.schimpfmeister.favoritenActivity.FavoritenActivity;
 
 
 /**
@@ -282,10 +282,12 @@ public class MainActivity extends AppCompatActivity {
      */
     private void aboutDialogAnzeigen() {
 
-        int anzahlKombinationen = _schimpfwortGenerator.getAnzahlKombinationen();
+        int anzKombinationen = _schimpfwortGenerator.getAnzahlKombinationen();
+        String anzKombinationenStr =  getGanzzahlenFormatierer().format( anzKombinationen );
+
         String versionName = BuildConfig.VERSION_NAME;
 
-        String ueberText = getString(R.string.ueber_text, anzahlKombinationen, versionName, BUILD_ZEITPUNKT);
+        String ueberText = getString(R.string.ueber_text, anzKombinationenStr, versionName, BUILD_ZEITPUNKT);
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
 

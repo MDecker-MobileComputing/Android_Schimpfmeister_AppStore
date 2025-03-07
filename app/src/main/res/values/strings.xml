@@ -6,7 +6,7 @@
     <string name="ueber_titel">Über Schimpfmeister</string>
     <string name="ueber_text">Diese App verwendet für die Erzeugung der Beschimpfungen den
         Algorithmus und die Wortlisten des Schimpfolino-Gadget von Nikolai Radke.
-        \n\nDie App kann %1$,d verschiedene Schimpfwörter erzeugen.
+        \n\nDie App kann %1$s verschiedene Schimpfwörter erzeugen.
         \n\nVersion %2$s
         \n\nBuild-Zeitpunkt:\n%3$s.
     </string>
