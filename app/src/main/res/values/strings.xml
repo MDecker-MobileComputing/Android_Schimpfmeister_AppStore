@@ -18,12 +18,17 @@
     <string name="actionbar_favoriten_anzeigen">Gemerkte Schimpfwörter anzeigen</string>
     <string name="actionbar_neu">Neues Schimpfwort</string>
     <string name="actionbar_merken">Schimpfwort merken</string>
+    <string name="actionbar_zwischenablage">in Zwischenablage kopieren</string>
 
     <string name="button_ok">OK</string>
     <string name="button_schimpfolino_besuchen">Schimpfolino besuchen</string>
 
+    <string name="toast_fehler_clipboard">Fehler: Kein Zugriff auf Clipboard möglich</string>
+
     <!-- Texte für FavoritenActivity -->
     <string name="button_zurueck">Zurück</string>
     <string name="activit_titel_favoriten">Gemerkte Schimpfwörter (%d)</string>
+
+    <string name="clipboard_titel">Schimpfwort</string>
 
 </resources>

@@ -4,6 +4,9 @@ import static de.mide.android.schimpfmeister.BuildConfig.BUILD_ZEITPUNKT;
 import static de.mide.android.schimpfmeister.helferlein.FormatiererFactory.getGanzzahlenFormatierer;
 import static android.content.Intent.ACTION_VIEW;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -210,6 +213,11 @@ public class MainActivity extends AppCompatActivity {
             return true;
 
         }
+        else if (selectedMenuId == R.id.action_zwischenablage) {
+
+            inZwischenablageKopieren();
+            return true;
+        }
         /*
         else if (selectedMenuId == R.id.action_merken) {
 
@@ -274,6 +282,32 @@ public class MainActivity extends AppCompatActivity {
 
         String favoritHinzugefuegtText = getString(R.string.favorit_hinzugefuegt, anzahl);
         Toast.makeText(this, favoritHinzugefuegtText, Toast.LENGTH_LONG).show();
+    }
+
+
+    /**
+     * Kopiert aktuell angezeigtes Schimpfwort in die Zwischenablage.
+     */
+    private void inZwischenablageKopieren() {
+
+        ClipboardManager clipboard = (ClipboardManager)
+                            getSystemService( Context.CLIPBOARD_SERVICE );
+
+        if ( clipboard == null ) {
+
+            Toast.makeText( this, R.string.toast_fehler_clipboard, Toast.LENGTH_LONG )
+                    .show();
+            return;
+        }
+
+        String schimpfwortString = _schimpfwort.toString();
+
+        ClipData clip =
+                ClipData.newPlainText(
+                        getString( R.string.clipboard_titel ),
+                        schimpfwortString );
+
+        clipboard.setPrimaryClip( clip );
     }
 
 
