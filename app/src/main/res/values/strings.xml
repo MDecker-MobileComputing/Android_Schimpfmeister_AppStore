@@ -27,6 +27,7 @@
     <string name="toast_fehler_clipboard">Fehler: Kein Zugriff auf Clipboard möglich</string>
     <string name="toast_fehler_browser">Fehler: Keine externe Browser-App gefunden</string>
     <string name="toast_fehler_teilen">Fehler: Kann nicht geteilt werden</string>
+    <string name="toast_fehler_actionbar">Fehler: Keine ActionBar gefunden</string>
 
     <!-- Texte für FavoritenActivity -->
     <string name="button_zurueck">Zurück</string>

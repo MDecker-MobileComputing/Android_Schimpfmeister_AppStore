@@ -2,6 +2,7 @@ package de.mide.android.schimpfmeister;
 
 import static de.mide.android.schimpfmeister.BuildConfig.BUILD_ZEITPUNKT;
 import static de.mide.android.schimpfmeister.helferlein.FormatiererFactory.getGanzzahlenFormatierer;
+import static de.mide.android.schimpfmeister.helferlein.ToastHelfer.toastAnzeigen;
 import static android.content.Intent.ACTION_VIEW;
 
 import android.content.ClipData;
@@ -16,7 +17,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar == null) {
 
-            Toast.makeText(this, "Keine ActionBar vorhanden.", Toast.LENGTH_LONG).show();
+            toastAnzeigen(this, R.string.toast_fehler_actionbar );
             return;
         }
 
@@ -291,7 +291,7 @@ public class MainActivity extends AppCompatActivity {
         _merkenMenuItem.setIcon(R.drawable.baseline_favorite_24_deaktiviert);
 
         String favoritHinzugefuegtText = getString(R.string.favorit_hinzugefuegt, anzahl);
-        Toast.makeText(this, favoritHinzugefuegtText, Toast.LENGTH_LONG).show();
+        toastAnzeigen(this, R.string.favorit_hinzugefuegt );
     }
 
 
@@ -305,8 +305,7 @@ public class MainActivity extends AppCompatActivity {
 
         if ( clipboard == null ) {
 
-            Toast.makeText( this, R.string.toast_fehler_clipboard, Toast.LENGTH_LONG )
-                    .show();
+            toastAnzeigen( this, R.string.toast_fehler_clipboard );
             return;
         }
 
@@ -383,11 +382,9 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
 
-            Toast.makeText(this,
-                            R.string.toast_fehler_teilen,
-                            Toast.LENGTH_LONG
-                          ).show();
+            toastAnzeigen(this, R.string.toast_fehler_teilen );
         }
+
         startActivity( intent );
     }
 
@@ -410,10 +407,7 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
 
-            Toast.makeText(this,
-                            R.string.toast_fehler_browser,
-                            Toast.LENGTH_LONG
-                          ).show();
+            toastAnzeigen(this, R.string.toast_fehler_browser );
         }
     }
 
@@ -438,5 +432,4 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
     }
-
 }
