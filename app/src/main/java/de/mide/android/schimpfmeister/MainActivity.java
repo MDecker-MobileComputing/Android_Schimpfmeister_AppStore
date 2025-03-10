@@ -19,6 +19,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBar;
+import androidx.core.view.MenuCompat;
 
 import de.mide.android.schimpfmeister.engine.SchimpfwortGenerator;
 import de.mide.android.schimpfmeister.engine.SchimpfwortRecord;
@@ -185,6 +186,8 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.action_bar_menu_items, menu);
 
         //_merkenMenuItem = menu.findItem(R.id.action_merken);
+
+        MenuCompat.setGroupDividerEnabled(menu, true);
 
         return super.onCreateOptionsMenu(menu);
     }

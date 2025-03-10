@@ -34,19 +34,30 @@
     -->
 
 
-    <item
-        android:id="@+id/action_zwischenablage"
-        android:title="@string/actionbar_zwischenablage"
-        app:showAsAction="never" />
+    <!--
+         group für Trennlinie, muss noch mit MenuCompat.setGroupDividerEnabled(menu, true)
+         aktiviert werden.
+    -->
+    
+    <group android:id="@+id/overflowmenu_funktionen">
+        <item
+            android:id="@+id/action_zwischenablage"
+            android:title="@string/actionbar_zwischenablage"
+            app:showAsAction="never" />
+    </group>
 
-    <item
-        android:id="@+id/action_ueber"
-        android:title="@string/actionbar_ueber_dieses_app"
-        app:showAsAction="never" />
+    <group android:id="@+id/overflowmenu_info">
 
-    <item
-        android:id="@+id/action_hilfe"
-        android:title="@string/actionbar_hilfe"
-        app:showAsAction="never" />
+        <item
+            android:id="@+id/action_ueber"
+            android:title="@string/actionbar_ueber_dieses_app"
+            app:showAsAction="never" />
+
+        <item
+            android:id="@+id/action_hilfe"
+            android:title="@string/actionbar_hilfe"
+            app:showAsAction="never" />
+
+    </group>
 
 </menu>
