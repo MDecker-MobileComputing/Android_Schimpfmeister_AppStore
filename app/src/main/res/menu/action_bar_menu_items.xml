@@ -38,11 +38,17 @@
          group für Trennlinie, muss noch mit MenuCompat.setGroupDividerEnabled(menu, true)
          aktiviert werden.
     -->
-    
+
     <group android:id="@+id/overflowmenu_funktionen">
+
         <item
             android:id="@+id/action_zwischenablage"
             android:title="@string/actionbar_zwischenablage"
+            app:showAsAction="never" />
+
+        <item
+            android:id="@+id/action_teilen"
+            android:title="@string/actionbar_teilen"
             app:showAsAction="never" />
     </group>
 

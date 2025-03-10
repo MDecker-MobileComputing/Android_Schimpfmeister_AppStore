@@ -18,12 +18,15 @@
     <string name="actionbar_favoriten_anzeigen">Gemerkte Schimpfwörter anzeigen</string>
     <string name="actionbar_neu">Neues Schimpfwort</string>
     <string name="actionbar_merken">Schimpfwort merken</string>
-    <string name="actionbar_zwischenablage">in Zwischenablage kopieren</string>
+    <string name="actionbar_zwischenablage">In Zwischenablage kopieren</string>
+    <string name="actionbar_teilen">Teilen</string>
 
     <string name="button_ok">OK</string>
     <string name="button_schimpfolino_besuchen">Schimpfolino im Web besuchen</string>
 
     <string name="toast_fehler_clipboard">Fehler: Kein Zugriff auf Clipboard möglich</string>
+    <string name="toast_fehler_browser">Fehler: Keine externe Browser-App gefunden</string>
+    <string name="toast_fehler_teilen">Fehler: Kann nicht geteilt werden</string>
 
     <!-- Texte für FavoritenActivity -->
     <string name="button_zurueck">Zurück</string>

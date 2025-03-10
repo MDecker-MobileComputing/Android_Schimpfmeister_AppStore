@@ -6,8 +6,10 @@ import static android.content.Intent.ACTION_VIEW;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -221,6 +223,11 @@ public class MainActivity extends AppCompatActivity {
             inZwischenablageKopieren();
             return true;
         }
+        else if (selectedMenuId == R.id.action_teilen) {
+
+            teilen();
+            return true;
+        }
         /*
         else if (selectedMenuId == R.id.action_merken) {
 
@@ -359,6 +366,33 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
+     * Aktuell angezeigtes Schimpfwort per implizitem Intent teilen, z.B.
+     * per E-mail.
+     */
+    private void teilen() {
+
+        String schimpfwortString = _schimpfwort.toString();
+        Intent intent = new Intent( Intent.ACTION_SEND );
+        intent.setType( "text/plain" );
+        intent.putExtra( Intent.EXTRA_TEXT, schimpfwortString );
+
+        boolean wirdUnterstuetzt = intentWirdUnterstuetzt( intent );
+        if ( wirdUnterstuetzt ) {
+
+            startActivity( intent );
+
+        } else {
+
+            Toast.makeText(this,
+                            R.string.toast_fehler_teilen,
+                            Toast.LENGTH_LONG
+                          ).show();
+        }
+        startActivity( intent );
+    }
+
+
+    /**
      * URL in externer Web-Browser-App auf Gerät öffnen.
      *
      * @param url URL, die im Browser geöffnet werden soll.
@@ -368,7 +402,41 @@ public class MainActivity extends AppCompatActivity {
         Uri httpUri = Uri.parse(url);
         Intent intent = new Intent(ACTION_VIEW);
         intent.setData(httpUri);
-        startActivity(intent);
+
+        boolean wirdUnterstuetzt = intentWirdUnterstuetzt( intent );
+        if ( wirdUnterstuetzt ) {
+
+            startActivity( intent );
+
+        } else {
+
+            Toast.makeText(this,
+                            R.string.toast_fehler_browser,
+                            Toast.LENGTH_LONG
+                          ).show();
+        }
+    }
+
+
+    /**
+     * Prüft, ob die übergebene Intent-Instanz von einer Activity auf dem Gerät
+     * unterstützt wird.
+     *
+     * @param intent Intent, der geprüft werden soll.
+     *
+     * @return {@code true} gdw. Intent von einer Activity unterstützt wird.
+     */
+    private boolean intentWirdUnterstuetzt( Intent intent) {
+
+        PackageManager packageManager = getPackageManager();
+        ComponentName componentName = intent.resolveActivity( packageManager );
+
+        if ( componentName == null ) {
+
+            return false;
+        }
+
+        return true;
     }
 
 }
