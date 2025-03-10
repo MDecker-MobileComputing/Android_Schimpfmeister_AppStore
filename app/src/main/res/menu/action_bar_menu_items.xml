@@ -15,12 +15,6 @@
     <!-- wegen "withText" wird der Text zusätzlich zum Icon angezeigt, 
          wenn genügend Platz vorhanden ist. -->
 
-    <item
-        android:id="@+id/action_zwischenablage"
-        android:icon="@drawable/baseline_content_copy_24"
-        android:title="@string/actionbar_zwischenablage"
-        app:showAsAction="always|withText" />
-
     <!--
     <item
         android:id="@+id/action_merken"
@@ -38,6 +32,12 @@
         android:title="@string/actionbar_favoriten_anzeigen"
         app:showAsAction="never" />
     -->
+
+
+    <item
+        android:id="@+id/action_zwischenablage"
+        android:title="@string/actionbar_zwischenablage"
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/action_ueber"
