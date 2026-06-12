@@ -12,7 +12,7 @@
         android:icon="@drawable/baseline_refresh_24"
         android:title="@string/actionbar_neu"
         app:showAsAction="always|withText" />
-    <!-- wegen "withText" wird der Text zusätzlich zum Icon angezeigt, 
+    <!-- wegen "withText" wird der Text zusätzlich zum Icon angezeigt,
          wenn genügend Platz vorhanden ist. -->
 
     <!--
@@ -50,6 +50,13 @@
             android:id="@+id/action_teilen"
             android:title="@string/actionbar_teilen"
             app:showAsAction="never" />
+
+        <item
+            android:id="@+id/action_bindestrich_toggle"
+            android:title="@string/actionbar_bindestriche"
+            android:checkable="true"
+            app:showAsAction="never" />
+
     </group>
 
     <group android:id="@+id/overflowmenu_info">

@@ -5,14 +5,17 @@ import static de.mide.android.schimpfmeister.helferlein.FormatiererFactory.getGa
 import static de.mide.android.schimpfmeister.helferlein.ToastHelfer.toastAnzeigen;
 import static android.content.Intent.ACTION_VIEW;
 
+
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -26,6 +29,7 @@ import androidx.core.view.MenuCompat;
 import de.mide.android.schimpfmeister.engine.SchimpfwortGenerator;
 import de.mide.android.schimpfmeister.engine.SchimpfwortRecord;
 
+import static androidx.preference.PreferenceManager.getDefaultSharedPreferences;
 
 /**
  * Activity zur Anzeige zufällig generierter Schimpfwörter.
@@ -57,8 +61,17 @@ public class MainActivity extends AppCompatActivity {
     private static final String URL_SCHIMPFOLOINO =
             "https://github.com/NikolaiRadke/Schimpfolino/blob/main/README.md";
 
+    /**
+     * Key für Shared Preferences: Wenn die Preference den Wert {@code true} hat, dann
+     * wird das zweite Wort der Beschimpfung mit Bindestrich dargestellt, sonst nicht.
+     */
+    private static final String EINSTELLUNGEN_KEY_BINDESTRICH = "bindestrich";
+
     /** Objekt für zufällige Erzeugung von Schimpfwörtern. */
     private SchimpfwortGenerator _schimpfwortGenerator = new SchimpfwortGenerator(this);
+
+    /** Objekt für Zugriff auf Einstellungen. */
+    private SharedPreferences _sharedPreferences = null;
 
     /** UI-Element zur Anzeige des Adjektivs am Anfang des Schimpfworts. */
     private TextView _adjektivTextview = null;
@@ -90,10 +103,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        _sharedPreferences = getDefaultSharedPreferences(this);
+
         _adjektivTextview   = findViewById(R.id.adjektiv_textview);
         _substantivTextview = findViewById(R.id.subjektiv_textview);
 
         actionBarKonfigurieren();
+        bindestrichModusWiederherstellen();
 
         boolean schimpfwortWiederhergestellt = schimpfwortWiederherstellen(savedInstanceState);
         if (!schimpfwortWiederhergestellt) {
@@ -102,6 +118,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    /**
+     * Methode list Bindestrichmodus aus Shared Preferences aus
+     * und setzt diesen am Generator und auch im Menü.
+     *
+     * Diese Methode muss vor der Erzeugung des ersten Schimpfworts aufgerufen werden,
+     * aber die ActionBar muss bereits eingerichtet sein.
+     */
+    private void bindestrichModusWiederherstellen() {
+
+        final boolean bindestrichAn =
+                _sharedPreferences.getBoolean( EINSTELLUNGEN_KEY_BINDESTRICH, false );
+        _schimpfwortGenerator.setBindestrichAn( bindestrichAn );
+    }
 
     /**
      * Die Methode versucht das zuvor angezeigte Schimpfwort wiederherzustellen.
@@ -169,6 +199,7 @@ public class MainActivity extends AppCompatActivity {
 
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.mipmap.ic_launcher);
+
     }
 
 
@@ -186,6 +217,8 @@ public class MainActivity extends AppCompatActivity {
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.action_bar_menu_items, menu);
+
+        setBindestrichMenuItemChecked( menu );
 
         //_merkenMenuItem = menu.findItem(R.id.action_merken);
 
@@ -228,6 +261,19 @@ public class MainActivity extends AppCompatActivity {
             teilen();
             return true;
         }
+        else if (selectedMenuId == R.id.action_bindestrich_toggle) {
+
+            final boolean bindestrichAnNeu = !item.isChecked();
+            item.setChecked( bindestrichAnNeu );
+
+            _sharedPreferences.edit()
+                    .putBoolean( EINSTELLUNGEN_KEY_BINDESTRICH, bindestrichAnNeu )
+                    .apply();
+
+            _schimpfwortGenerator.setBindestrichAn( bindestrichAnNeu );
+
+            return true;
+        }
         /*
         else if (selectedMenuId == R.id.action_merken) {
 
@@ -255,6 +301,27 @@ public class MainActivity extends AppCompatActivity {
         } */ else {
 
             return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+    /**
+     * Setzt den Haken des Menüeintrags für den Bindestrich-Modus entsprechend der
+     * gespeicherten Einstellung.
+     *
+     * @param menu Menü, in dem der Eintrag aktualisiert werden soll.
+     */
+    private void setBindestrichMenuItemChecked(Menu menu) {
+
+        MenuItem bindestrichMenuItem = menu.findItem(R.id.action_bindestrich_toggle);
+        if (bindestrichMenuItem != null) {
+
+            bindestrichMenuItem.setChecked(
+                    _sharedPreferences.getBoolean( EINSTELLUNGEN_KEY_BINDESTRICH, false ) );
+        } else {
+
+            Log.w( TAG4LOGGING,
+                    "MenuItem für Wiederherstellung Bindestrich-Status nicht gefunden" );
         }
     }
 
@@ -325,11 +392,11 @@ public class MainActivity extends AppCompatActivity {
      */
     private void aboutDialogAnzeigen() {
 
-        int anzKombinationen = _schimpfwortGenerator.getAnzahlKombinationen();
+        int anzKombinationen       = _schimpfwortGenerator.getAnzahlKombinationen();
         String anzKombinationenStr =  getGanzzahlenFormatierer().format( anzKombinationen );
 
         String versionName = BuildConfig.VERSION_NAME;
-        int versionCode = BuildConfig.VERSION_CODE;
+        int versionCode    = BuildConfig.VERSION_CODE;
 
         String ueberText = getString( R.string.ueber_text,
                                       anzKombinationenStr,

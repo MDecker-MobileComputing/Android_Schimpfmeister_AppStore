@@ -49,6 +49,14 @@ public class SchimpfwortGenerator {
     /** Generator für Zufallszahlen. */
     private Random _random = new Random();
 
+    /**
+     * Wenn {@code true}, dann wird das Substantiv des Schimpfworts mit Bindestrich dargestellt;
+     * das Substantiv des Schimpfworts ist immer ein zusammengesetztes Wort (Kompositum),
+     * und ein Bindestrich kann bei einem Kompositum die Lesbarkeit erleichtern.
+     * Der Default-Wert ist {@code false}.
+     */
+    private boolean _bindestrichAn = false;
+
 
     /**
      * Konstruktor.
@@ -70,13 +78,38 @@ public class SchimpfwortGenerator {
 
         GenusEnum genus = getGenus();
 
-        String wort1 = getWort1(genus);
-        String wort2 = getWort2();
-        String wort3 = getWort3(genus);
+        String adjektiv = getWort1(genus);
+        String wort2    = getWort2();
+        String wort3    = getWort3(genus);
 
-        return new SchimpfwortRecord(wort1, wort2 + wort3);
+        String substantiv = "";
+        if ( _bindestrichAn && !wort3.isEmpty() ) {
+
+            wort3 = wort3.substring( 0, 1 ).toUpperCase() +
+                    wort3.substring( 1 );
+
+            substantiv = wort2 + "-" + wort3;
+
+        } else {
+
+            substantiv = wort2 + wort3;
+        }
+
+        return new SchimpfwortRecord(adjektiv, substantiv);
     }
 
+
+    /**
+     * Bindestrich zwischen aus zwei Substantiven zusammengesetzten zweitem Wort
+     * des Schimpfworts darstellen.
+     *
+     * @param bindestrichAn {@code true}, wenn zweites Wort immer Bindestrich
+     *                      enthalten soll, sonst {@code false}
+     */
+    public void setBindestrichAn( boolean bindestrichAn ) {
+
+        _bindestrichAn = bindestrichAn;
+    }
 
     /**
      * Methode gibt einen zufällig gewählten Genus (Maskulinum, Femininum, Neutrum) zurück.
