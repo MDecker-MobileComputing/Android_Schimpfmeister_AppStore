@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace 'de.mide.android.schimpfmeister'
-    compileSdk 35
+    compileSdk 36
 
     // für BUILD_ZEITPUNKT unten
     android.buildFeatures.buildConfig true
@@ -12,11 +12,11 @@ android {
     defaultConfig {
         applicationId "de.mide.android.schimpfmeister"
         minSdk 24
-        targetSdk 35
-        versionCode 7
-        versionName "1.4"
+        targetSdk 36 // darf nicht vor mehr als einem Jahr released worden sein?
+        versionCode 8
+        versionName "1.5"
 
-        // Definition von BUILD_ZEITPUNKT, ist erst nach erstem Build verfügbar; ggf. auch Gradle-Datei syncen.
+        // Definition von BUILD_ZEITPUNKT ist erst nach erstem Build verfügbar; ggf. auch Gradle-Datei syncen.
         // Zugriff: import static de.mide.android.schimpfmeister.BuildConfig.BUILD_ZEITPUNKT;
         def buildZeitpunkt = new Date()
         def buildZeitpunktStr = buildZeitpunkt.format("d. MMM yyyy (EE), HH:mm 'Uhr'")
