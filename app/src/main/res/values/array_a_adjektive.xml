@@ -15,6 +15,7 @@
       Einträge wurden von GitHub Copilot alphabetisch sortiert.
     -->
     <string-array name="array_adjektive">
+        <item>Abwegige</item><!-- Synonym für "Absurde" -->
         <item>Absurde</item>
         <item>Bekloppte</item>
         <item>Beknackte</item>
@@ -72,6 +73,7 @@
         <item>Knarzende</item>
         <item>Kochende</item>
         <item>Krumme</item>
+        <item>Krümelige</item><!-- Synonym für Bröckelige -->
         <item>Kauzige</item>
         <item>Keifende</item>
         <item>Knorrige</item>
@@ -114,6 +116,7 @@
         <item>Plumpe</item>
         <item>Popelige</item>
         <item>Prollige</item>
+        <item>Qualmende</item><!-- Synonym für "Dampfende" -->
         <item>Quieckende</item>
         <item>Ranzige</item>
         <item>Ratternde</item>
@@ -142,6 +145,7 @@
         <item>Totale</item>
         <item>Torkelnde</item>
         <item>Tratschige</item>
+        <item>Träge</item><!-- Synonym für "Faule" -->
         <item>Triefende</item>
         <item>Tranige</item>
         <item>Trübe</item>
@@ -156,6 +160,9 @@
         <item>Winzige</item>
         <item>Wüste</item>
         <item>Zahnlose</item>
+        <item>Zappelige</item><!-- Synonym für "Hippelige" -->
+        <item>Zerknitterte</item><!-- Synonym für "Faltige" -->
+        <item>Zersaust</item><!-- Synonym für "Haarig" -->
         <item>Zottelige</item>
         <!--<item>Zweickende</item>-->
     </string-array>
