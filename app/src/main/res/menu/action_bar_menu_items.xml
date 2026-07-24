@@ -55,6 +55,7 @@
             android:id="@+id/action_bindestrich_toggle"
             android:title="@string/actionbar_bindestriche"
             android:checkable="true"
+            android:checked="true"
             app:showAsAction="never" />
 
     </group>

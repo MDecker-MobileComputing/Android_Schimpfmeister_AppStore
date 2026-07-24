@@ -128,8 +128,15 @@ public class MainActivity extends AppCompatActivity {
      */
     private void bindestrichModusWiederherstellen() {
 
+        if ( !_sharedPreferences.contains( EINSTELLUNGEN_KEY_BINDESTRICH ) ) {
+
+            _sharedPreferences.edit()
+                .putBoolean( EINSTELLUNGEN_KEY_BINDESTRICH, true )
+                .apply();
+        }
+
         final boolean bindestrichAn =
-                _sharedPreferences.getBoolean( EINSTELLUNGEN_KEY_BINDESTRICH, false );
+            _sharedPreferences.getBoolean( EINSTELLUNGEN_KEY_BINDESTRICH, true );
         _schimpfwortGenerator.setBindestrichAn( bindestrichAn );
     }
 
@@ -199,7 +206,6 @@ public class MainActivity extends AppCompatActivity {
 
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.mipmap.ic_launcher);
-
     }
 
 
@@ -317,7 +323,7 @@ public class MainActivity extends AppCompatActivity {
         if (bindestrichMenuItem != null) {
 
             bindestrichMenuItem.setChecked(
-                    _sharedPreferences.getBoolean( EINSTELLUNGEN_KEY_BINDESTRICH, false ) );
+                    _sharedPreferences.getBoolean( EINSTELLUNGEN_KEY_BINDESTRICH, true ) );
         } else {
 
             Log.w( TAG4LOGGING,

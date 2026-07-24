@@ -53,9 +53,9 @@ public class SchimpfwortGenerator {
      * Wenn {@code true}, dann wird das Substantiv des Schimpfworts mit Bindestrich dargestellt;
      * das Substantiv des Schimpfworts ist immer ein zusammengesetztes Wort (Kompositum),
      * und ein Bindestrich kann bei einem Kompositum die Lesbarkeit erleichtern.
-     * Der Default-Wert ist {@code false}.
+     * Der Default-Wert ist {@code true}.
      */
-    private boolean _bindestrichAn = false;
+    private boolean _bindestrichAn = true;
 
 
     /**
